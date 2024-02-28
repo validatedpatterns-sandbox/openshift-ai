@@ -5,14 +5,24 @@ clusterGroup:
     - open-cluster-management
     - vault
     - golang-external-secrets
+    - redhat-ods-operator
+    - openshift-pipelines
   subscriptions:
     acm:
       name: advanced-cluster-management
       namespace: open-cluster-management
       channel: release-2.9
       #csv: advanced-cluster-management.v2.6.1
+    rhods:
+      name: rhods-operator
+      namespace: redhat-ods-operator
+    pipelines:
+      name: openshift-pipelines-operator-rh
+      namespace: openshift-operators
   projects:
     - hub
+    - openshift-ai
+    - pipelines
   # Explicitly mention the cluster-state based overrides we plan to use for this pattern.
   # We can use self-referential variables because the chart calls the tpl function with these variables defined
   sharedValueFiles:
@@ -54,6 +64,16 @@ clusterGroup:
       namespace: golang-external-secrets
       project: hub
       path: common/golang-external-secrets
+    openshift-ai:
+      name: openshift-ai
+      namespace: rhods-ods-operator
+      project: oai
+      path: charts/all/rhods
+    openshift-pipelines:
+      name: openshift-pipelines
+      namespace: openshift-pipelines
+      project: pipelines
+      path: charts/all/pipelines
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
     # The default schedule is every 10 minutes: imperative.schedule
