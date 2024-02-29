@@ -23,7 +23,7 @@ clusterGroup:
       namespace: openshift-operators
   projects:
     - hub
-    - openshift-ai
+    - rhods
     - pipelines
   # Explicitly mention the cluster-state based overrides we plan to use for this pattern.
   # We can use self-referential variables because the chart calls the tpl function with these variables defined
@@ -69,7 +69,7 @@ clusterGroup:
     openshift-ai:
       name: openshift-ai
       namespace: rhods-ods-operator
-      project: openshift-ai
+      project: rhods
       path: charts/all/rhods
     openshift-pipelines:
       name: openshift-pipelines
