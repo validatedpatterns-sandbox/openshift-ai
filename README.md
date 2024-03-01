@@ -31,5 +31,3 @@ The goal for this pattern is to:
 - Fork this repository and clone to your local machine
 - Change directories to `openshfit-ai`
 - Run `./pattern.sh make install`
-
-
