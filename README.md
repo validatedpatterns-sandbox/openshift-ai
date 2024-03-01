@@ -21,14 +21,15 @@ OpenShift AI has an instance of the datascience cluster CRD deployed, as well as
 
 The goal for this pattern is to:
 
-* Use a GitOps approach to MLOps workflows
-* Incorporate a CI solution with OpenShift Pipelines
-* Provide a quick, reliable way to get started with OpenShift AI and OpenShift Pipelines
-* Securely manage secrets across the deployment.
+- Use a GitOps approach to MLOps workflows
+- Incorporate a CI solution with OpenShift Pipelines
+- Provide a quick, reliable way to get started with OpenShift AI and OpenShift Pipelines
+- Securely manage secrets across the deployment.
 
 ## Quick Start
-* Fork this repository and clone to your local machine
-* Change directories to `openshfit-ai`
-* Run `./pattern.sh make install`
+
+- Fork this repository and clone to your local machine
+- Change directories to `openshfit-ai`
+- Run `./pattern.sh make install`
 
 
