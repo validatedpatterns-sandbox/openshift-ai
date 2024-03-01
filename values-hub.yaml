@@ -66,8 +66,8 @@ clusterGroup:
       namespace: golang-external-secrets
       project: hub
       path: common/golang-external-secrets
-    openshift-ai:
-      name: openshift-ai
+    rhods:
+      name: rhods
       namespace: rhods-ods-operator
       project: rhods
       path: charts/all/rhods
