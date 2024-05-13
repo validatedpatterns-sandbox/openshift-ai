@@ -13,6 +13,8 @@ clusterGroup:
         operatorGroup: true
     - openshift-distributed-tracing:
         operatorGroup: true
+    - openshift-nfd:
+        operatorGroup: true
     - openshift-operators-redhat:
         operatorGroup: true
   subscriptions:
