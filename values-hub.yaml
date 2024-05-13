@@ -112,7 +112,7 @@ clusterGroup:
       path: common/golang-external-secrets
     rhods:
       name: rhods
-      namespace: rhods-ods-operator
+      # namespace: rhods-ods-operator
       project: rhods
       path: kustomization/rhods/overlays/eus-2.8
       kustomize: true
