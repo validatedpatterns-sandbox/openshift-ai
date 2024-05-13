@@ -114,7 +114,8 @@ clusterGroup:
       name: rhods
       namespace: rhods-ods-operator
       project: rhods
-      path: kustomization/rhods
+      path: kustomization/rhods/overlays/eus-2.8
+      kustomize: true
     # openshift-pipelines:
     #   name: openshift-pipelines
     #   namespace: openshift-pipelines
