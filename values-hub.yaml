@@ -114,8 +114,7 @@ clusterGroup:
       name: rhods
       namespace: rhods-ods-operator
       project: rhods
-      path: /components/operators/openshift-ai/aggregate/overlays/eus-2.8
-      repo: https://github.com/redhat-ai-services/ai-accelerator.git
+      path: /kustomization/rhods
     # openshift-pipelines:
     #   name: openshift-pipelines
     #   namespace: openshift-pipelines
