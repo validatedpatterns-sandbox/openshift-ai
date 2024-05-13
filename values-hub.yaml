@@ -14,7 +14,6 @@ clusterGroup:
     - openshift-operators-redhat:
         operatorGroup: true
   subscriptions:
-  subscriptions:
     # acm:
     #   name: advanced-cluster-management
     #   namespace: open-cluster-management
@@ -24,7 +23,7 @@ clusterGroup:
       name: gpu-operator-certified
       namespace: nvidia-gpu-operator
       source: certified-operators
-      channel: v23.9
+      channel: stable
     pipelines:
       name: openshift-pipelines-operator-rh
       namespace: openshift-operators
