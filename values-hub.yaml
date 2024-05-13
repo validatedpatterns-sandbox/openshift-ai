@@ -9,6 +9,8 @@ clusterGroup:
        operatorGroup: true
        targetNamespaces:
     - openshift-pipelines
+    - openshift-serverless:
+        operatorGroup: true
     - openshift-distributed-tracing:
         operatorGroup: true
     - openshift-operators-redhat:
