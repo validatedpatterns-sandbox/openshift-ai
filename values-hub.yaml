@@ -67,7 +67,8 @@ clusterGroup:
       channel: stable
   projects:
     - hub
-    - rhods
+    - openshift-ai
+    - gpu
     - pipelines
   # Explicitly mention the cluster-state based overrides we plan to use for this pattern.
   # We can use self-referential variables because the chart calls the tpl function with these variables defined
@@ -110,11 +111,20 @@ clusterGroup:
       namespace: golang-external-secrets
       project: hub
       path: common/golang-external-secrets
-    rhods:
-      name: rhods
-      # namespace: rhods-ods-operator
-      project: rhods
-      path: kustomization/rhods/overlays/eus-2.8
+    openshift-ai:
+      name: openshift-ai
+      project: openshift-ai
+      path: kustomization/openshift-ai/overlays/eus-2.8
+      kustomize: true
+    nfd:
+      name: nfd
+      project: gpu
+      path: kustomization/nfd/overlays/default
+      kustomize: true
+    nvidia-gpu-operator:
+      name: nvidia-gpu-operator
+      project: gpu
+      path: kustomization/gpu-operator-certified/overlays/aws
       kustomize: true
     # openshift-pipelines:
     #   name: openshift-pipelines
