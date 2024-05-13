@@ -9,18 +9,57 @@ clusterGroup:
        operatorGroup: true
        targetNamespaces:
     - openshift-pipelines
+    - openshift-distributed-tracing:
+        operatorGroup: true
+    - openshift-operators-redhat:
+        operatorGroup: true
   subscriptions:
-    acm:
-      name: advanced-cluster-management
-      namespace: open-cluster-management
-      channel: release-2.9
+  subscriptions:
+    # acm:
+    #   name: advanced-cluster-management
+    #   namespace: open-cluster-management
+    #   channel: release-2.10
       #csv: advanced-cluster-management.v2.6.1
-    rhods:
-      name: rhods-operator
-      namespace: redhat-ods-operator
+    nvidia-gpu:
+      name: gpu-operator-certified
+      namespace: nvidia-gpu-operator
+      source: certified-operators
+      channel: v23.9
     pipelines:
       name: openshift-pipelines-operator-rh
       namespace: openshift-operators
+      channel: latest
+    serverless:
+      name: serverless-operator
+      namespace: openshift-serverless
+      channel: stable
+    servicemesh:
+      name: servicemeshoperator
+      namespace: openshift-operators
+      channel: stable
+    jaeger:
+      name: jaeger-product
+      namespace: openshift-distributed-tracing
+      channel: stable
+    kaili:
+      name: kiali-ossm
+      namespace: openshift-operators
+      channel: stable
+    elasticsearch:
+      name: elasticsearch-operator
+      namespace: openshift-operators-redhat
+      channel: stable
+    # Don't install RHOAI via validated patterns
+    # RHOAI must be installed after service mesh and other dependencies are installed or it will break. 
+    # The RHOAI Application will install the operator after a validation check has passed
+    # rhoai:
+    #   name: rhods-operator
+    #   namespace: redhat-ods-operator
+    #   channel: eus-2.8
+    nfd:
+      name: nfd
+      namespace: openshift-nfd
+      channel: stable
   projects:
     - hub
     - rhods
@@ -46,16 +85,16 @@ clusterGroup:
   #   - '/overrides/values-{{ $.Values.global.hubClusterDomain }}.yaml'
   #   - '/overrides/values-{{ $.Values.global.localClusterDomain }}.yaml'
   applications:
-    acm:
-      name: acm
-      namespace: open-cluster-management
-      project: hub
-      path: common/acm
-      ignoreDifferences:
-        - group: internal.open-cluster-management.io
-          kind: ManagedClusterInfo
-          jsonPointers:
-            - /spec/loggingCA
+    # acm:
+    #   name: acm
+    #   namespace: open-cluster-management
+    #   project: hub
+    #   path: common/acm
+    #   ignoreDifferences:
+    #     - group: internal.open-cluster-management.io
+    #       kind: ManagedClusterInfo
+    #       jsonPointers:
+    #         - /spec/loggingCA
     vault:
       name: vault
       namespace: vault
@@ -70,12 +109,13 @@ clusterGroup:
       name: rhods
       namespace: rhods-ods-operator
       project: rhods
-      path: charts/all/rhods
-    openshift-pipelines:
-      name: openshift-pipelines
-      namespace: openshift-pipelines
-      project: pipelines
-      path: charts/all/pipelines
+      path: /components/operators/openshift-ai/aggregate/overlays/eus-2.8
+      repo: https://github.com/redhat-ai-services/ai-accelerator.git
+    # openshift-pipelines:
+    #   name: openshift-pipelines
+    #   namespace: openshift-pipelines
+    #   project: pipelines
+    #   path: charts/all/pipelines
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
     # The default schedule is every 10 minutes: imperative.schedule
