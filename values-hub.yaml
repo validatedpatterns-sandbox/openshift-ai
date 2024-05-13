@@ -5,9 +5,9 @@ clusterGroup:
     - open-cluster-management
     - vault
     - golang-external-secrets
-    - redhat-ods-operator:
-       operatorGroup: true
-       targetNamespaces:
+    # - redhat-ods-operator:
+    #    operatorGroup: true
+    #    targetNamespaces:
     - openshift-pipelines
     - openshift-serverless:
         operatorGroup: true
