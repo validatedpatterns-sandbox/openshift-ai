@@ -73,6 +73,7 @@ clusterGroup:
     - openshift-ai
     - gpu
     - pipelines
+    - examples
   # Explicitly mention the cluster-state based overrides we plan to use for this pattern.
   # We can use self-referential variables because the chart calls the tpl function with these variables defined
   sharedValueFiles:
@@ -129,6 +130,14 @@ clusterGroup:
       project: gpu
       path: kustomization/gpu-operator-certified/overlays/aws
       kustomize: true
+    multi-model-serving-example:
+      name: multi-model-serving
+      project: examples
+      path: kustomization/multi-model-serving/overlays/eus-2.8
+    single-model-serving-example:
+      name: single-model-serving
+      project: examples
+      path: kustomization/single-model-serving/overlays/eus-2.8
     # openshift-pipelines:
     #   name: openshift-pipelines
     #   namespace: openshift-pipelines
