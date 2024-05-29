@@ -3,5 +3,5 @@ kind: Kustomization
 
 resources:
   - github.com/redhat-ai-services/ai-accelerator/tenants/ai-example/namespaces/overlays/rhoai-eus-2.8?ref=main
-  - github.com/redhat-ai-services/tenants/ai-example/single-model-serving-minio/overlays/rhoai-eus-2.8?ref=main
-  - github.com/redhat-ai-services/tenants/ai-example/single-model-serving-tgis/overlays/rhoai-eus-2.8?ref=main
+  - github.com/redhat-ai-services/ai-accelerator/tenants/ai-example/single-model-serving-minio/overlays/rhoai-eus-2.8?ref=main
+  - github.com/redhat-ai-services/ai-accelerator/tenants/ai-example/single-model-serving-tgis/overlays/rhoai-eus-2.8?ref=main

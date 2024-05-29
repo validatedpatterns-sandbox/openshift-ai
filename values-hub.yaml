@@ -48,6 +48,7 @@ clusterGroup:
     jaeger:
       name: jaeger-product
       namespace: openshift-distributed-tracing
+      source: redhat-operators
       channel: stable
     kaili:
       name: kiali-ossm
@@ -133,11 +134,15 @@ clusterGroup:
     multi-model-serving-example:
       name: multi-model-serving
       project: examples
-      path: kustomization/multi-model-serving/overlays/eus-2.8
+      namespace: ai-example-multi-model-serving
+      path: kustomization/examples/multi-model-serving/overlays/eus-2.8
+      kustomize: true
     single-model-serving-example:
       name: single-model-serving
       project: examples
-      path: kustomization/single-model-serving/overlays/eus-2.8
+      namespace: ai-single-multi-model-serving
+      path: kustomization/examples/single-model-serving/overlays/eus-2.8
+      kustomize: true
     # openshift-pipelines:
     #   name: openshift-pipelines
     #   namespace: openshift-pipelines
