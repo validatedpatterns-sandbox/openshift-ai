@@ -140,13 +140,13 @@ clusterGroup:
       name: multi-model-serving
       project: examples
       namespace: ai-example-multi-model-serving
-      path: kustomization/examples/multi-model-serving/overlays/eus-2.8
+      path: kustomization/examples/multi-model-serving/overlays/rhoai-eus-2.8
       kustomize: true
     single-model-serving-example:
       name: single-model-serving
       project: examples
       namespace: ai-single-multi-model-serving
-      path: kustomization/examples/single-model-serving/overlays/eus-2.8
+      path: kustomization/examples/single-model-serving/overlays/rhoai-eus-2.8
       kustomize: true
     # openshift-pipelines:
     #   name: openshift-pipelines
