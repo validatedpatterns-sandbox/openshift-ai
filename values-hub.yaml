@@ -140,13 +140,25 @@ clusterGroup:
       name: multi-model-serving
       project: examples
       namespace: ai-example-multi-model-serving
-      path: kustomization/examples/multi-model-serving/overlays/rhoai-eus-2.8
+      path: kustomization/examples/multi-model-serving-example/multi-model-serving/overlays/rhoai-eus-2.8
+      kustomize: true
+    multi-model-serving-minio:
+      name: multi-model-minio
+      project: examples
+      namespace: ai-example-multi-model-serving
+      path: kustomization/examples/multi-model-serving-example/multi-model-serving-minio/overlays/rhoai-eus-2.8
       kustomize: true
     single-model-serving-example:
       name: single-model-serving
       project: examples
-      namespace: ai-single-multi-model-serving
-      path: kustomization/examples/single-model-serving/overlays/rhoai-eus-2.8
+      namespace: ai-example-single-model-serving
+      path: kustomization/examples/single-model-serving-example/single-model-serving/overlays/rhoai-eus-2.8
+      kustomize: true
+    single-model-serving-minio:
+      name: single-model-minio
+      project: examples
+      namespace: ai-example-single-model-serving
+      path: kustomization/examples/single-model-serving-example/single-model-serving-minio/overlays/rhoai-eus-2.8
       kustomize: true
     # openshift-pipelines:
     #   name: openshift-pipelines
