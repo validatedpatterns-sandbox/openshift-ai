@@ -30,5 +30,5 @@ clusterGroup:
     nvidia-gpu-operator:
       name: nvidia-gpu-operator
       project: gpu
-      path: kustomization/gpu-operator-certified/overlays/aws
+      path: kustomization/gpu-operator-certified/instance/overlays/aws
       kustomize: true

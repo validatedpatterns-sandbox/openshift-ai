@@ -127,12 +127,12 @@ clusterGroup:
     openshift-ai:
       name: openshift-ai
       project: openshift-ai
-      path: kustomization/openshift-ai/overlays/eus-2.8
+      path: kustomization/openshift-ai/aggregate/overlays/eus-2.8
       kustomize: true
     nfd:
       name: nfd
       project: gpu
-      path: kustomization/nfd/overlays/default
+      path: kustomization/nfd/instance/overlays/default
       kustomize: true
 
     # openshift-pipelines:
