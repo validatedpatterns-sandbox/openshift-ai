@@ -134,11 +134,7 @@ clusterGroup:
       project: gpu
       path: kustomization/nfd/overlays/default
       kustomize: true
-    nvidia-gpu-operator:
-      name: nvidia-gpu-operator
-      project: gpu
-      path: kustomization/gpu-operator-certified/overlays/aws
-      kustomize: true
+
     # openshift-pipelines:
     #   name: openshift-pipelines
     #   namespace: openshift-pipelines
