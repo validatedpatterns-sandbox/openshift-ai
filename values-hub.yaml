@@ -165,6 +165,13 @@ clusterGroup:
       project: ai-example-workload
       path: kustomization/ai-example/workbenches/overlays/rhoai-eus-2.8
       kustomize: true
+      ignoreDifferences:
+        - kind: Notebook
+          group: kubeflow.org
+          jqPathExpressions:
+            - .spec.template.spec.containers[] | select(.name == "oauth-proxy")
+            - .spec.template.spec.volumes[] | select(.name == "oauth-config")
+            - .spec.template.spec.volumes[] | select(.name == "tls-certificates")
 
     # openshift-pipelines:
     #   name: openshift-pipelines
