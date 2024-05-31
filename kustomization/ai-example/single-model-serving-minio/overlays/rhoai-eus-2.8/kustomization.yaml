@@ -1,0 +1,5 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - github.com/redhat-ai-services/ai-accelerator/tenants/ai-example/single-model-serving-minio/overlays/rhoai-eus-2.8?ref=main

@@ -81,6 +81,7 @@ clusterGroup:
   projects:
     - hub
     - openshift-ai
+    - ai-example-workload
     - gpu
     - pipelines
   # Explicitly mention the cluster-state based overrides we plan to use for this pattern.
@@ -133,6 +134,36 @@ clusterGroup:
       name: nfd
       project: gpu
       path: kustomization/nfd/instance/overlays/default
+      kustomize: true
+    ai-example-datascience-pipelines:
+      name: ai-example-datascience-pipelines
+      project: ai-example-workload
+      path: kustomization/ai-example/datascience-pipelines/overlays/rhoai-eus-2.8
+      kustomize: true
+    ai-example-multi-model-serving:
+      name: ai-example-multi-model-serving
+      project: ai-example-workload
+      path: kustomization/ai-example/multi-model-serving/overlays/rhoai-eus-2.8
+      kustomize: true
+    ai-example-multi-model-serving-minio:
+      name: ai-example-multi-model-serving-minio
+      project: ai-example-workload
+      path: kustomization/ai-example/multi-model-serving-minio/overlays/rhoai-eus-2.8
+      kustomize: true
+    ai-example-single-model-serving-tgis:
+      name: ai-example-multi-model-serving-tgis
+      project: ai-example-workload
+      path: kustomization/ai-example/single-model-serving-tgis/overlays/rhoai-eus-2.8
+      kustomize: true
+    ai-example-single-model-serving-minio:
+      name: ai-example-single-model-serving-minio
+      project: ai-example-workload
+      path: kustomization/ai-example/single-model-serving-minio/overlays/rhoai-eus-2.8
+      kustomize: true
+    ai-example-workbenches:
+      name: ai-example-workbenches
+      project: ai-example-workload
+      path: kustomization/ai-example/workbenches/overlays/rhoai-eus-2.8
       kustomize: true
 
     # openshift-pipelines:
