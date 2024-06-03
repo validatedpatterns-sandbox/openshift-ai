@@ -23,13 +23,13 @@ clusterGroup:
         operatorGroup: true
         targetNamespaces: []
     - ai-example-training:
-        annotations:
+        labels:
           opendatahub.io/dashboard: "true"
     - ai-example-single-model-serving:
-        annotations:
+        labels:
           opendatahub.io/dashboard: "true"
     - ai-example-multi-model-serving:
-        annotations:
+        labels:
           opendatahub.io/dashboard: "true"
 
   subscriptions:
