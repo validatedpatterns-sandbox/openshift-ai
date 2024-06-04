@@ -74,7 +74,7 @@ clusterGroup:
     # rhoai:
     #   name: rhods-operator
     #   namespace: redhat-ods-operator
-    #   channel: eus-2.8
+    #   channel: fast
     nfd:
       name: nfd
       namespace: openshift-nfd
@@ -129,7 +129,7 @@ clusterGroup:
     openshift-ai:
       name: openshift-ai
       project: openshift-ai
-      path: kustomization/openshift-ai/aggregate/overlays/eus-2.8
+      path: kustomization/openshift-ai/aggregate/overlays/fast
       kustomize: true
     nfd:
       name: nfd
@@ -139,32 +139,32 @@ clusterGroup:
     ai-example-datascience-pipelines:
       name: ai-example-datascience-pipelines
       project: ai-example-workload
-      path: kustomization/ai-example/datascience-pipelines/overlays/rhoai-eus-2.8
+      path: kustomization/ai-example/datascience-pipelines/overlays/rhoai-fast
       kustomize: true
     ai-example-multi-model-serving:
       name: ai-example-multi-model-serving
       project: ai-example-workload
-      path: kustomization/ai-example/multi-model-serving/overlays/rhoai-eus-2.8
+      path: kustomization/ai-example/multi-model-serving/overlays/rhoai-fast
       kustomize: true
     ai-example-multi-model-serving-minio:
       name: ai-example-multi-model-serving-minio
       project: ai-example-workload
-      path: kustomization/ai-example/multi-model-serving-minio/overlays/rhoai-eus-2.8
+      path: kustomization/ai-example/multi-model-serving-minio/overlays/rhoai-fast
       kustomize: true
     ai-example-single-model-serving-tgis:
       name: ai-example-multi-model-serving-tgis
       project: ai-example-workload
-      path: kustomization/ai-example/single-model-serving-tgis/overlays/rhoai-eus-2.8
+      path: kustomization/ai-example/single-model-serving-tgis/overlays/rhoai-fast
       kustomize: true
     ai-example-single-model-serving-minio:
       name: ai-example-single-model-serving-minio
       project: ai-example-workload
-      path: kustomization/ai-example/single-model-serving-minio/overlays/rhoai-eus-2.8
+      path: kustomization/ai-example/single-model-serving-minio/overlays/rhoai-fast
       kustomize: true
     ai-example-workbenches:
       name: ai-example-workbenches
       project: ai-example-workload
-      path: kustomization/ai-example/workbenches/overlays/rhoai-eus-2.8
+      path: kustomization/ai-example/workbenches/overlays/rhoai-fast
       kustomize: true
       ignoreDifferences:
         - kind: Notebook
