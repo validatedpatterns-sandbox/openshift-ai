@@ -141,6 +141,11 @@ clusterGroup:
       project: ai-example-workload
       path: kustomization/ai-example/datascience-pipelines/overlays/rhoai-fast
       kustomize: true
+    ai-example-dsp-example-pipeline:
+      name: ai-example-dsp-example-pipeline
+      project: ai-example-workload
+      path: kustomization/ai-example/dsp-example-pipeline/overlays/rhoai-fast
+      kustomize: true
     ai-example-multi-model-serving:
       name: ai-example-multi-model-serving
       project: ai-example-workload
