@@ -31,8 +31,8 @@
 * Secret: aws-connection-tgis
 * InferenceService: tgis
 * ServingRuntime: tgis
-* Deployment: granite-predictor-*-deployment
-* Pod: granite-predictor-*-deployment
+* Deployment: tgis-predictor-*-deployment
+* Pod: tgis-predictor-*-deployment
 
 * Successful Job: create-buckets-vllm-*
 * Successful Job: upload-model-to-s3-vllm-*
@@ -41,8 +41,8 @@
 * Secret: aws-connection-vllm
 * InferenceService: vllm
 * ServingRuntime: vllm
-* Deployment: tgis-predictor-*-deployment
-* Pod: tgis-predictor-*-deployment
+* Deployment: granite-predictor-*-deployment
+* Pod: granite-predictor-*-deployment
 
 * Pod: minio-*
 * Secret: minio
