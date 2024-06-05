@@ -12,16 +12,10 @@ clusterGroup:
     - openshift-serverless:
         operatorGroup: true
         targetNamespaces: []
-    - openshift-distributed-tracing:
-        operatorGroup: true
-        targetNamespaces: []
     - openshift-nfd:
         operatorGroup: true
     - nvidia-gpu-operator:
         operatorGroup: true
-    - openshift-operators-redhat:
-        operatorGroup: true
-        targetNamespaces: []
     - ai-example-training:
         labels:
           opendatahub.io/dashboard: "true"
@@ -55,19 +49,6 @@ clusterGroup:
     servicemesh:
       name: servicemeshoperator
       namespace: openshift-operators
-      channel: stable
-    jaeger:
-      name: jaeger-product
-      namespace: openshift-distributed-tracing
-      source: redhat-operators
-      channel: stable
-    kaili:
-      name: kiali-ossm
-      namespace: openshift-operators
-      channel: stable
-    elasticsearch:
-      name: elasticsearch-operator
-      namespace: openshift-operators-redhat
       channel: stable
     # Don't install RHOAI via validated patterns
     # RHOAI must be installed after service mesh and other dependencies are installed or it will break. 
