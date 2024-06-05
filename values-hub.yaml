@@ -59,6 +59,7 @@ clusterGroup:
     jaeger:
       name: jaeger-product
       namespace: openshift-distributed-tracing
+      source: redhat-operators
       channel: stable
     kaili:
       name: kiali-ossm
@@ -85,6 +86,7 @@ clusterGroup:
     - ai-example-workload
     - gpu
     - pipelines
+    - examples
   # Explicitly mention the cluster-state based overrides we plan to use for this pattern.
   # We can use self-referential variables because the chart calls the tpl function with these variables defined
   sharedValueFiles:
