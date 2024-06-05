@@ -159,7 +159,7 @@ clusterGroup:
       path: kustomization/ai-example/multi-model-serving-minio/overlays/rhoai-fast
       kustomize: true
     ai-example-single-model-serving-tgis:
-      name: ai-example-multi-model-serving-tgis
+      name: ai-example-single-model-serving-tgis
       project: ai-example-workload
       path: kustomization/ai-example/single-model-serving-tgis/overlays/rhoai-fast
       kustomize: true
