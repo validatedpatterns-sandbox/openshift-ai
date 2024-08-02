@@ -5,26 +5,69 @@ clusterGroup:
     - open-cluster-management
     - vault
     - golang-external-secrets
-    - redhat-ods-operator:
-       operatorGroup: true
-       targetNamespaces:
+    # - redhat-ods-operator:
+    #    operatorGroup: true
+    #    targetNamespaces:
     - openshift-pipelines
+    - openshift-serverless:
+        operatorGroup: true
+        targetNamespaces: []
+    - openshift-nfd:
+        operatorGroup: true
+    - nvidia-gpu-operator:
+        operatorGroup: true
+    - ai-example-training:
+        labels:
+          opendatahub.io/dashboard: "true"
+    - ai-example-single-model-serving:
+        labels:
+          opendatahub.io/dashboard: "true"
+    - ai-example-multi-model-serving:
+        labels:
+          opendatahub.io/dashboard: "true"
+          modelmesh-enabled: "true"
+
   subscriptions:
-    acm:
-      name: advanced-cluster-management
-      namespace: open-cluster-management
-      channel: release-2.9
+    # acm:
+    #   name: advanced-cluster-management
+    #   namespace: open-cluster-management
+    #   channel: release-2.10
       #csv: advanced-cluster-management.v2.6.1
-    rhods:
-      name: rhods-operator
-      namespace: redhat-ods-operator
+    nvidia-gpu:
+      name: gpu-operator-certified
+      namespace: nvidia-gpu-operator
+      source: certified-operators
+      channel: stable
     pipelines:
       name: openshift-pipelines-operator-rh
       namespace: openshift-operators
+      channel: latest
+    serverless:
+      name: serverless-operator
+      namespace: openshift-serverless
+      channel: stable
+    servicemesh:
+      name: servicemeshoperator
+      namespace: openshift-operators
+      channel: stable
+    # Don't install RHOAI via validated patterns
+    # RHOAI must be installed after service mesh and other dependencies are installed or it will break. 
+    # The RHOAI Application will install the operator after a validation check has passed
+    # rhoai:
+    #   name: rhods-operator
+    #   namespace: redhat-ods-operator
+    #   channel: fast
+    nfd:
+      name: nfd
+      namespace: openshift-nfd
+      channel: stable
   projects:
     - hub
-    - rhods
+    - openshift-ai
+    - ai-example-workload
+    - gpu
     - pipelines
+    - examples
   # Explicitly mention the cluster-state based overrides we plan to use for this pattern.
   # We can use self-referential variables because the chart calls the tpl function with these variables defined
   sharedValueFiles:
@@ -46,16 +89,16 @@ clusterGroup:
   #   - '/overrides/values-{{ $.Values.global.hubClusterDomain }}.yaml'
   #   - '/overrides/values-{{ $.Values.global.localClusterDomain }}.yaml'
   applications:
-    acm:
-      name: acm
-      namespace: open-cluster-management
-      project: hub
-      path: common/acm
-      ignoreDifferences:
-        - group: internal.open-cluster-management.io
-          kind: ManagedClusterInfo
-          jsonPointers:
-            - /spec/loggingCA
+    # acm:
+    #   name: acm
+    #   namespace: open-cluster-management
+    #   project: hub
+    #   path: common/acm
+    #   ignoreDifferences:
+    #     - group: internal.open-cluster-management.io
+    #       kind: ManagedClusterInfo
+    #       jsonPointers:
+    #         - /spec/loggingCA
     vault:
       name: vault
       namespace: vault
@@ -66,16 +109,64 @@ clusterGroup:
       namespace: golang-external-secrets
       project: hub
       path: common/golang-external-secrets
-    rhods:
-      name: rhods
-      namespace: rhods-ods-operator
-      project: rhods
-      path: charts/all/rhods
-    openshift-pipelines:
-      name: openshift-pipelines
-      namespace: openshift-pipelines
-      project: pipelines
-      path: charts/all/pipelines
+    openshift-ai:
+      name: openshift-ai
+      project: openshift-ai
+      path: kustomization/openshift-ai/aggregate/overlays/fast
+      kustomize: true
+    nfd:
+      name: nfd
+      project: gpu
+      path: kustomization/nfd/instance/overlays/default
+      kustomize: true
+    ai-example-datascience-pipelines:
+      name: ai-example-datascience-pipelines
+      project: ai-example-workload
+      path: kustomization/ai-example/datascience-pipelines/overlays/rhoai-fast
+      kustomize: true
+    ai-example-dsp-example-pipeline:
+      name: ai-example-dsp-example-pipeline
+      project: ai-example-workload
+      path: kustomization/ai-example/dsp-example-pipeline/overlays/rhoai-fast
+      kustomize: true
+    ai-example-multi-model-serving:
+      name: ai-example-multi-model-serving
+      project: ai-example-workload
+      path: kustomization/ai-example/multi-model-serving/overlays/rhoai-fast
+      kustomize: true
+    ai-example-multi-model-serving-minio:
+      name: ai-example-multi-model-serving-minio
+      project: ai-example-workload
+      path: kustomization/ai-example/multi-model-serving-minio/overlays/rhoai-fast
+      kustomize: true
+    ai-example-single-model-serving-tgis:
+      name: ai-example-single-model-serving-tgis
+      project: ai-example-workload
+      path: kustomization/ai-example/single-model-serving-tgis/overlays/rhoai-fast
+      kustomize: true
+    ai-example-single-model-serving-minio:
+      name: ai-example-single-model-serving-minio
+      project: ai-example-workload
+      path: kustomization/ai-example/single-model-serving-minio/overlays/rhoai-fast
+      kustomize: true
+    ai-example-workbenches:
+      name: ai-example-workbenches
+      project: ai-example-workload
+      path: kustomization/ai-example/workbenches/overlays/rhoai-fast
+      kustomize: true
+      ignoreDifferences:
+        - kind: Notebook
+          group: kubeflow.org
+          jqPathExpressions:
+            - .spec.template.spec.containers[] | select(.name == "oauth-proxy")
+            - .spec.template.spec.volumes[] | select(.name == "oauth-config")
+            - .spec.template.spec.volumes[] | select(.name == "tls-certificates")
+
+    # openshift-pipelines:
+    #   name: openshift-pipelines
+    #   namespace: openshift-pipelines
+    #   project: pipelines
+    #   path: charts/all/pipelines
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
     # The default schedule is every 10 minutes: imperative.schedule

@@ -24,3 +24,11 @@
 #       # Using 'default' as that exists everywhere
 #       project: default
 #       path: common/letsencrypt
+
+clusterGroup:
+  applications:
+    nvidia-gpu-operator:
+      name: nvidia-gpu-operator
+      project: gpu
+      path: kustomization/gpu-operator-certified/instance/overlays/aws
+      kustomize: true
