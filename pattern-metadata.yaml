@@ -18,13 +18,13 @@ requirements:
       platform:
         gcp:
           replicas: 3
-          type: n1-standard-8
+          type: n2-standard-16
         azure:
           replicas: 3
-          type: Standard_D8s_v3
+          type: Standard_D16as_v4
         aws:
           replicas: 3
-          type: m5.2xlarge
+          type: m5.4xlarge
     controlPlane:
       platform:
         gcp:
