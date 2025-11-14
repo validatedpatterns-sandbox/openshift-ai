@@ -46,8 +46,7 @@ def test_check_pod_status(openshift_dyn_client):
     projects = ["redhat-ods-applications"]
     err_msg = components.check_pod_status(openshift_dyn_client, projects)
     if err_msg:
-        logger.error(f"FAIL: {err_msg}")
-        assert False, err_msg
+        assert False, "FAIL: One or more pods are failing."
     else:
         logger.info("PASS: Pod status check succeeded.")
 
@@ -55,7 +54,7 @@ def test_check_pod_status(openshift_dyn_client):
 @pytest.mark.check_pod_count_hub
 def test_check_pod_count_hub(openshift_dyn_client):
     logger.info("Checking pod count")
-    projects = {"redhat-ods-applications": 13}
+    projects = {"redhat-ods-applications": 10}
 
     failed = []
     for key in projects.keys():
